@@ -1,0 +1,13 @@
+﻿@model ContactsModel
+@{
+    ViewData["Title"] = "Deleting Contacts";
+}
+
+<div class="text-center">
+    <h3>
+        Do you really want to delete the contact (@Model.Name)?
+    </h3>
+
+    <a class="btn btn-primary col-12" role="button" asp-controller="Contacts" asp-action="Index">Cancel deleting</a>
+    <a class="btn btn-danger col-12" role="button" asp-controller="Contacts" asp-route-id="@Model.Id" asp-action="DeleteConfirmed">Confirm deleting</a>
+</div>

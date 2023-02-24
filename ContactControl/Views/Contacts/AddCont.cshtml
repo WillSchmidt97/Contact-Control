@@ -1,0 +1,31 @@
+﻿@model ContactsModel
+
+@{
+    ViewData["Title"] = "Creating Contacts";
+}
+
+<div class="text-center">
+
+    <h1 class="display-4">Adding Contacts</h1>
+</div>
+@*@using (Html.BeginForm("SalvarApontamentoConsultaRecurso", "Contratos", FormMethod.Post, new { @class = "form-comunicacao", role = "form", @id = "form-comunicacao", @autocomplete = "off" }))*@
+<form asp-controller="Contacts" asp-action="AddCont" method="post">
+    
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" asp-for="Name" class="form-control" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="text" asp-for="Email" class="form-control" placeholder="E-mail">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" asp-for="Phone" class="form-control" placeholder="Phone">
+    </div>
+
+    <button type="submit" class="btn btn-primary col-12">Adicionar</button>
+    <a  class="btn btn-secondary col-12" asp-controller="Contacts" asp-action="Index" role="button">Back</a>
+</form>
