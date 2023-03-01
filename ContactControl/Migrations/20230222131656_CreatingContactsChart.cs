@@ -18,7 +18,10 @@ namespace ContactControl.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Postalcode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Adress = table.Column<string>(type: "nvarchar(max)", nullable: false)
+
                 },
                 constraints: table =>
                 {

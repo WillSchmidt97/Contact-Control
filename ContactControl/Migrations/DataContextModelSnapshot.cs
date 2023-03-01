@@ -41,6 +41,14 @@ namespace ContactControl.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Postalcode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Adress")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+                   
                     b.HasKey("Id");
 
                     b.ToTable("Contacts");

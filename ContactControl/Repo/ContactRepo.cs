@@ -34,6 +34,8 @@ namespace ContactControl.Repo
             contactDB.Name = contacts.Name;
             contactDB.Email = contacts.Email;
             contactDB.Phone = contacts.Phone;
+            contactDB.Postalcode = contacts.Postalcode;
+            contactDB.Adress = contacts.Adress;
 
             _context.Contacts.Update(contactDB);
             _context.SaveChanges();
