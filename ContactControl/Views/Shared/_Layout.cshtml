@@ -45,6 +45,13 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#postalcode').mask('00000-000');  //brazilian postal code
+            $('#phone').mask('(00) 00000-0000'); //brazilian phone number
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
