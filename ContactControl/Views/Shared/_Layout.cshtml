@@ -49,6 +49,28 @@
     <script>
         $(document).ready(function () {
             $('#postalcode').mask('00000-000');  //brazilian postal code
+            // Add blur() to CEP
+            $('#postalcode').blur(function () {
+                // Take the value of the field "cep"
+                var cep = $(this).val().replace(/\D/g, '');
+
+                // Check if cep is not empty
+                if (cep != '') {
+                    // Calls the ViaCEP's API
+                    $.getJSON('https://viacep.com.br/ws/' + cep + '/json/?callback=?', function (data) {
+                        // if the return of the API is "error", shows a message
+                        if (data.erro) {
+                            alert('Postal code not found.');
+                        } else {
+                            // if there is no error, it will fulfill the field state, city, neighborhood and address
+                            $('#state').val(data.uf);
+                            $('#city').val(data.localidade);
+                            $('#neighborhood').val(data.bairro);
+                            $('#address').val(data.logradouro);
+                        }
+                    });
+                }
+            });
             $('#phone').mask('(00) 00000-0000'); //brazilian phone number
         });
     </script>
