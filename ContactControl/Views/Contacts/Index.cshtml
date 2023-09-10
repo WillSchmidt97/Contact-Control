@@ -10,6 +10,22 @@
     </div>
     <br />
 
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["SuccessMessage"]
+        </div>        
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["ErrorMessage"]
+        </div>        
+    }
+
     <h1 class="display-4">Contacts List</h1>
 
     <table class="table">
