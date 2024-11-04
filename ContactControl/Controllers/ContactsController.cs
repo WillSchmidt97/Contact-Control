@@ -58,6 +58,7 @@ namespace ContactControl.Controllers
                 return RedirectToAction("Index");
             }
         }
+
         [HttpPost]
         public IActionResult AddCont(ContactsModel contacts)
         {

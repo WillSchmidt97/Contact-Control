@@ -20,6 +20,7 @@ namespace ContactControl
             builder.Services.AddEntityFrameworkSqlServer().AddDbContext<DataContext>(options =>
                 options.UseSqlServer(connectionString));
             builder.Services.AddScoped<IContactRepo, ContactRepo>();
+            builder.Services.AddScoped<IUserRepo, UserRepo>();
 
             var app = builder.Build();
 
