@@ -11,10 +11,10 @@ namespace ContactControl.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.RenameColumn(
-                name: "Adress",
-                table: "Contacts",
-                newName: "Address");
+            //migrationBuilder.RenameColumn(
+            //    name: "Adress",
+            //    table: "Contacts",
+            //    newName: "Address");
 
             migrationBuilder.CreateTable(
                 name: "Users",
