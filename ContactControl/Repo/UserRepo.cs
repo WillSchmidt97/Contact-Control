@@ -11,6 +11,11 @@ namespace ContactControl.Repo
             this._context = dataContext;
         }
 
+        public UserModel SearchLogin(string login)
+        {
+            return _context.Users.FirstOrDefault(x => x.Login.ToLower() == login.ToLower());
+        }
+
         public UserModel ListEachId(int id)
         {
             return _context.Users.FirstOrDefault(x => x.Id == id);

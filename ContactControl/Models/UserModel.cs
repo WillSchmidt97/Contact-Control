@@ -19,5 +19,10 @@ namespace ContactControl.Models
         public string Password { get; set; }
         public DateTime RegistrationDate { get; set; }
         public DateTime? EditDate { get; set; }
+
+        public bool IsPasswordCorrect(string password)
+        {
+            return Password == password;
+        }
     }
 }
