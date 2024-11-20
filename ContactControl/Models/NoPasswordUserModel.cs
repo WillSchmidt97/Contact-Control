@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ContactControl.Models
 {
-    public class UserModel
+    public class NoPasswordUserModel
     {
         public int Id { get; set; }
         [Required(ErrorMessage = "Name field required!")]
@@ -15,9 +15,5 @@ namespace ContactControl.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Select the user's profile type!")]
         public ProfileEnum? Profile { get; set; }
-        [Required(ErrorMessage = "Password field required!")]
-        public string Password { get; set; }
-        public DateTime RegistrationDate { get; set; }
-        public DateTime? EditDate { get; set; }
     }
 }
