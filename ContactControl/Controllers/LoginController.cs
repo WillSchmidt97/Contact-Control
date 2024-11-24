@@ -1,5 +1,6 @@
 ﻿using ContactControl.Models;
 using ContactControl.Repo;
+using ContactControl.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContactControl.Controllers
@@ -7,13 +8,15 @@ namespace ContactControl.Controllers
     public class LoginController : Controller
     {
         private readonly IUserRepo _userRepo;
-        public LoginController(IUserRepo userRepo)
+        private readonly Helpers.ISession _session;
+        public LoginController(IUserRepo userRepo, Helpers.ISession session)
         {
             _userRepo = userRepo;
+            _session = session;
         }
         public IActionResult Index()
         {
-            return View();
+            return _session.SearchUserSession() != null ? RedirectToAction("Index", "Home") : View();
         }
 
         [HttpPost]
@@ -28,7 +31,10 @@ namespace ContactControl.Controllers
                     if (user != null)
                     {
                         if (user.IsPasswordCorrect(loginModel.Password))
+                        {
+                            _session.CreateUserSession(user);
                             return RedirectToAction("Index", "Home");
+                        }
                     }
 
                     TempData["ErrorMessage"] = "Login and/or password incorrect. Please, try again.";
@@ -41,6 +47,13 @@ namespace ContactControl.Controllers
                 TempData["ErrorMessage"] = $"Something went wrong: {ex.Message}";
                 return RedirectToAction("Index");
             }
+        }
+
+        public IActionResult Logout()
+        {
+            _session.RemoveUserSession();
+
+            return RedirectToAction("Index");
         }
     }
 }
