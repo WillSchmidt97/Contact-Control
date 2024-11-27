@@ -1,4 +1,5 @@
-﻿using ContactControl.Models;
+﻿using ContactControl.Filters;
+using ContactControl.Models;
 using ContactControl.Repo;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace ContactControl.Controllers
 {
+    [LoggedUser]
     public class ContactsController : Controller
     {
         private readonly IContactRepo _contactRepo;

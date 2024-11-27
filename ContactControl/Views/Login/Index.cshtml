@@ -13,12 +13,12 @@
 }
 
 <form asp-controller="Login" asp-action="Login" method="post">
-    <div class="mb-3">
+    <div class="mb-3" style="width: 30%;">
         <label for="login" class="form-label">Login</label>
         <input type="text" asp-for=Login class="form-control" id="login">
         @Html.ValidationMessageFor(x => x.Login)
     </div>
-    <div class="mb-3">
+    <div class="mb-3" style="width: 30%;">
         <label for="password" class="form-label">Password</label>
         <input type="password" asp-for=Password class="form-control" id="password">
         @Html.ValidationMessageFor(x => x.Password)

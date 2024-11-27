@@ -1,9 +1,11 @@
-﻿using ContactControl.Models;
+﻿using ContactControl.Filters;
+using ContactControl.Models;
 using ContactControl.Repo;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ContactControl.Controllers
 {
+    [RestrictToAdmin]
     public class UserController : Controller
     {
         private readonly IUserRepo _userRepo;

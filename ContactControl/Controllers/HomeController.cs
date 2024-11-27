@@ -1,9 +1,11 @@
-﻿using ContactControl.Models;
+﻿using ContactControl.Filters;
+using ContactControl.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace ContactControl.Controllers
 {
+    [LoggedUser]
     public class HomeController : Controller
     {
 
