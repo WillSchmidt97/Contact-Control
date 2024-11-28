@@ -27,6 +27,7 @@ namespace ContactControl.Repo
         public UserModel Adicionar(UserModel user)
         {
             user.RegistrationDate = DateTime.Now;
+            user.SetPasswordHash();
             _context.Users.Add(user);
             _context.SaveChanges();
             return user;
