@@ -49,6 +49,38 @@ namespace ContactControl.Controllers
             }
         }
 
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult SendLinkForResetingPassword(ResetPasswordModel resetPasswordModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    UserModel user = _userRepo.SearchLoginAndEmail(resetPasswordModel.Login, resetPasswordModel.Login);
+
+                    if (user != null)
+                    {
+                        TempData["SuccessMessage"] = "A new password was sent to your email.";
+                        return RedirectToAction("Index");
+                    }
+
+                    TempData["ErrorMessage"] = "It wasn't possible to reset your password. Please, check again your informed data.";
+                }
+
+                return View("Index");
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrorMessage"] = $"Something went wrong: {ex.Message}";
+                return RedirectToAction("Index");
+            }
+        }
+
         public IActionResult Logout()
         {
             _session.RemoveUserSession();

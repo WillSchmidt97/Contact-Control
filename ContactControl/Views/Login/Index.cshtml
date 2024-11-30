@@ -3,6 +3,13 @@
     Layout = "_LayoutLogin";
     ViewData["Title"] = "Login";
 }
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success" role="alert">
+       <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+        @TempData["SuccessMessage"]
+     </div>        
+}
 
 @if (TempData["ErrorMessage"] != null)
 {
@@ -23,5 +30,11 @@
         <input type="password" asp-for=Password class="form-control" id="password">
         @Html.ValidationMessageFor(x => x.Password)
     </div>
+
+    <p class="mb-4 text-sm mx-auto">
+        Forgot your password?
+        <a asp-action="ResetPassword" asp-controller="Login" class="text-primary text-gradient font-weight-bold">Reset my password</a>
+    </p>
+
     <button type="submit" class="btn btn-primary">Login</button>
 </form>

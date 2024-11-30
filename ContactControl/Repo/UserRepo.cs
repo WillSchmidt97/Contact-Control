@@ -16,6 +16,12 @@ namespace ContactControl.Repo
             return _context.Users.FirstOrDefault(x => x.Login.ToLower() == login.ToLower());
         }
 
+        public UserModel SearchLoginAndEmail(string login, string email)
+        {
+            return _context.Users.FirstOrDefault(x => x.Login.ToLower() == login.ToLower() &&
+                                                    x.Email.ToLower() == email.ToLower());
+        }
+
         public UserModel ListEachId(int id)
         {
             return _context.Users.FirstOrDefault(x => x.Id == id);
