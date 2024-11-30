@@ -65,6 +65,7 @@ namespace ContactControl.Controllers
 
                     if (user != null)
                     {
+                        string newPassword = user.GenerateNewPassword();
                         TempData["SuccessMessage"] = "A new password was sent to your email.";
                         return RedirectToAction("Index");
                     }
