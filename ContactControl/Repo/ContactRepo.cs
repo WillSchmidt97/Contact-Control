@@ -1,4 +1,5 @@
 ﻿using ContactControl.Data;
+using ContactControl.Helpers;
 using ContactControl.Models;
 
 namespace ContactControl.Repo
@@ -19,8 +20,19 @@ namespace ContactControl.Repo
         {
             return _context.Contacts.ToList();
         }
+        public List<ContactsModel> SearchUserContacts(int userId)
+        {
+            return _context.Contacts.Where(u => u.UserId== userId).ToList();
+        }
         public ContactsModel Adicionar(ContactsModel contacts)
         {
+            #region Session
+            var httpContextAccessor = new HttpContextAccessor();
+            var session = new Session(httpContextAccessor);
+            UserModel user = session.SearchUserSession();
+            #endregion
+
+            contacts.UserId= user.Id;
             _context.Contacts.Add(contacts);
             _context.SaveChanges();
             return contacts;

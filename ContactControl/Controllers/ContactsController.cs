@@ -1,4 +1,5 @@
 ﻿using ContactControl.Filters;
+using ContactControl.Helpers;
 using ContactControl.Models;
 using ContactControl.Repo;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,13 @@ namespace ContactControl.Controllers
         }
         public IActionResult Index()
         {
-            List<ContactsModel> contacts = _contactRepo.SearchAll();
+            #region Session
+            var httpContextAccessor = new HttpContextAccessor();
+            var session = new Session(httpContextAccessor);
+            UserModel user = session.SearchUserSession();
+            #endregion
+
+            List<ContactsModel> contacts = _contactRepo.SearchUserContacts(user.Id);
             return View(contacts);
         }
 
