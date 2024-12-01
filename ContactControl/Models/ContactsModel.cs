@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ContactControl.Models
 {
@@ -23,5 +24,8 @@ namespace ContactControl.Models
         public string Neighborhood { get; set; }
         [Required(ErrorMessage = "Address field required.")]
         public string Address { get; set; }
+        public int UserId { get; set; }
+        [ForeignKey("UserId")]
+        public UserModel User { get; set; }
     }
 }
